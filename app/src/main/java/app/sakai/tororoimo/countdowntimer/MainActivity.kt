@@ -13,7 +13,14 @@ class MainActivity : AppCompatActivity() {
     val timer : CountDownTimer = object  : CountDownTimer(10000, 1000) {
         override fun onFinish() {
             startButton.isVisible = true
+            second = 10
+            secondText.text = second.toString()
 
+        }
+
+        override fun onTick(millisUntilFinished: Long) {
+            second = second - 1
+            secondText.text = second.toString()
         }
     }
 
@@ -24,6 +31,7 @@ class MainActivity : AppCompatActivity() {
 
         startButton.setOnClickListener {
             startButton.isVisible = false
+            timer.start()
 
         }
     }
